@@ -1,3 +1,5 @@
+import random
+
 # Base Character class
 class Character:
     def __init__(self, name, health, attack_power):
@@ -7,8 +9,9 @@ class Character:
         self.max_health = health  # Store the original health for maximum limit
 
     def attack(self, opponent):
-        opponent.health -= self.attack_power
-        print(f"{self.name} attacks {opponent.name} for {self.attack_power} damage!")
+        damage = random.randint(int(self.attack_power * 0.8), int(self.attack_power * 1.2))
+        opponent.health -= damage
+        print(f"{self.name} attacks {opponent.name} for {damage} damage!")
         if opponent.health <= 0:
             print(f"{opponent.name} has been defeated!")
 
