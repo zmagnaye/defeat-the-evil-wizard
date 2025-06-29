@@ -1,3 +1,5 @@
+from characters import Warrior, Mage, EvilWizard, Archer, Paladin
+
 # Function to create player character based on user input
 def create_character():
     print("Choose your character class:")
@@ -14,11 +16,9 @@ def create_character():
     elif class_choice == '2':
         return Mage(name)
     elif class_choice == '3':
-        # Add Archer class here
-        pass
+        return Archer(name)
     elif class_choice == '4':
-        # Add Paladin class here
-        pass
+        return Paladin(name)
     else:
         print("Invalid choice. Defaulting to Warrior.")
         return Warrior(name)

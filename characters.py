@@ -43,3 +43,32 @@ class EvilWizard(Character):
     def regenerate(self):
         self.health += 5  # Lower regeneration amount
         print(f"{self.name} regenerates 5 health! Current health: {self.health}")
+
+# Archer class (inherits from Character)
+class Archer(Character):
+    def __init__(self, name):
+        super().__init__(name, health = 110, attack_power = 20)
+
+    def quick_shot(self, opponent):
+        damage = self.attack_power * 2
+        opponent.health -= damage
+        print(f"{self.name} uses Quick SHot! Deals {damage} damage!")
+
+    def evade(self):
+        print(f"{self.name} prepares to evade the next attack.")
+        self.evading = True
+
+# Paladin class (inherits from Character)
+class Paladin(Character):
+    def __init__(self, name):
+        super().__init__(name, health = 130, attack_power = 22)
+        self.shielded = False
+    
+    def holy_strike(self, opponent):
+        damage = self.attack_power + 10
+        opponent.health -= damage
+        print(f"{self.name} uses Holy Strike! Deals {damage} damage!")
+
+    def divine_shield(self):
+        self.shielded = True
+        print(f"{self.name}activated Divine Shield and will block the next attack.")
