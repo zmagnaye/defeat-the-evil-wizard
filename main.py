@@ -72,7 +72,15 @@ def battle(player, wizard):
         # Evil Wizard's turn to attack and regenerate
         if wizard.health > 0:
             wizard.regenerate()
-            wizard.attack(player)
+            
+            if isinstance(player, Archer) and getattr(player, "evading", False):
+                print(f"{player.name} evades the attack!")
+                player.evading = False # Reset event
+            elif isinstance(player, Paladin) and getattr(player, "shielded", False):
+                print(f"{player.name}'s Divine Shield blocks th4e attack!")
+                player.shielded = False # Reset shield
+            else:
+                wizard.attack(player)
 
         if player.health <= 0:
             print(f"{player.name} has been defeated!")
