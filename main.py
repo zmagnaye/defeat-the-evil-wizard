@@ -5,8 +5,8 @@ def create_character():
     print("Choose your character class:")
     print("1. Warrior")
     print("2. Mage")
-    print("3. Archer")  # Add Archer
-    print("4. Paladin")  # Add Paladin
+    print("3. Archer")
+    print("4. Paladin")
     
     class_choice = input("Enter the number of your class choice: ")
     name = input("Enter your character's name: ")
@@ -45,19 +45,19 @@ def battle(player, wizard):
                print("1. Quick Shot") 
                print("2. Evade") 
                sub = input("Choose an ability: ")
-               if sub == 1:
+               if sub == "1":
                    player.quick_shot(wizard)
-               elif sub == 2:
+               elif sub == "2":
                    player.evade()
                else:
                    print("Invalid ability choice!")
            elif isinstance(player, Paladin):
                print("1. Holy Strike") 
-               print("2. Divide Shield") 
+               print("2. Divine Shield") 
                sub = input("Choose an ability: ")
-               if sub == 1:
+               if sub == "1":
                    player.holy_strike(wizard)
-               elif sub == 2:
+               elif sub == "2":
                    player.divine_shield()
                else:
                    print("Invalid ability choice!")
@@ -77,17 +77,13 @@ def battle(player, wizard):
                 print(f"{player.name} evades the attack!")
                 player.evading = False # Reset event
             elif isinstance(player, Paladin) and getattr(player, "shielded", False):
-                print(f"{player.name}'s Divine Shield blocks th4e attack!")
+                print(f"{player.name}'s Divine Shield blocks the attack!")
                 player.shielded = False # Reset shield
             else:
                 wizard.attack(player)
 
-        if player.health <= 0:
-            print(f"{player.name} has been defeated!")
-            break
-
-    if wizard.health <= 0:
-        print(f"\n You have been defeated by th Evil Wizard!")
+    if player.health <= 0:
+        print(f"\n You have been defeated by the Evil Wizard!")
         print("Game Over.")
     elif wizard.health <= 0:
         print(f"\n {player.name} has defeated the Evil Wizard!")

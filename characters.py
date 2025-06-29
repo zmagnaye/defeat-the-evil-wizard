@@ -7,6 +7,8 @@ class Character:
         self.health = health
         self.attack_power = attack_power
         self.max_health = health  # Store the original health for maximum limit
+        self.evading = False
+        self.shielded = False
 
     def attack(self, opponent):
         damage = random.randint(int(self.attack_power * 0.8), int(self.attack_power * 1.2))
@@ -23,7 +25,7 @@ class Character:
         original_health = self.health
         self.health = min(self.health + heal_amount, self.max_health)
         actual_healed = self.health - original_health
-        print(f"{self.name} heals for {actual_healed} health! Current health: {self.health}\{self.max_health}")
+        print(f"{self.name} heals for {actual_healed} health! Current health: {self.health}/{self.max_health}")
 
 # Warrior class (inherits from Character)
 class Warrior(Character):
