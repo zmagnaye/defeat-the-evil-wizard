@@ -37,8 +37,30 @@ def battle(player, wizard):
         if choice == '1':
             player.attack(wizard)
         elif choice == '2':
-            # Call the special ability here
-            pass  # Implement this
+           if isinstance(player, Warrior):
+               player.power_attack(wizard)
+           elif isinstance(player, Mage):
+               player.cast_spell(wizard) 
+           elif isinstance(player, Archer):
+               print("1. Quick Shot") 
+               print("2. Evade") 
+               sub = input("Choose an ability: ")
+               if sub == 1:
+                   player.quick_shot(wizard)
+               elif sub == 2:
+                   player.evade()
+               else:
+                   print("Invalid ability choice!")
+           elif isinstance(player, Paladin):
+               print("1. Holy Strike") 
+               print("2. Divide Shield") 
+               sub = input("Choose an ability: ")
+               if sub == 1:
+                   player.holy_strike(wizard)
+               elif sub == 2:
+                   player.divine_shield()
+               else:
+                   print("Invalid ability choice!")
         elif choice == '3':
            player.heal()
         elif choice == '4':

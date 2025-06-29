@@ -30,7 +30,11 @@ class Warrior(Character):
     def __init__(self, name):
         super().__init__(name, health=140, attack_power=25)  # Boost health and attack power
 
-    # Add your power attack method here
+    def power_attack(self, opponent):
+       damage = int(self.attack_power * 1.5)
+       opponent.health -= damage
+       print(f"{self.name} uses Power Attack! Deals with {damage} damage!") 
+
 
 
 # Mage class (inherits from Character)
@@ -38,7 +42,10 @@ class Mage(Character):
     def __init__(self, name):
         super().__init__(name, health=100, attack_power=35)  # Boost attack power
 
-    # Add your cast spell method here
+    def cast_spell(self, opponent):
+       damage = int(self.attack_power * 1.8)
+       opponent.health -= damage
+       print(f"{self.name} uses a Fireball! Deals with {damage} magic damage!")
 
 
 # EvilWizard class (inherits from Character)
@@ -62,8 +69,8 @@ class Archer(Character):
         print(f"{self.name} uses Quick SHot! Deals {damage} damage!")
 
     def evade(self):
-        print(f"{self.name} prepares to evade the next attack.")
         self.evading = True
+        print(f"{self.name} prepares to evade the next attack.")
 
 # Paladin class (inherits from Character)
 class Paladin(Character):
@@ -79,3 +86,4 @@ class Paladin(Character):
     def divine_shield(self):
         self.shielded = True
         print(f"{self.name}activated Divine Shield and will block the next attack.")
+
