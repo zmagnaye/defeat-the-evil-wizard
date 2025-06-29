@@ -15,8 +15,12 @@ class Character:
     def display_stats(self):
         print(f"{self.name}'s Stats - Health: {self.health}/{self.max_health}, Attack Power: {self.attack_power}")
 
-    # Add your heal method here
-
+    def heal(self):
+        heal_amount = 20
+        original_health = self.health
+        self.health = min(self.health + heal_amount, self.max_health)
+        actual_healed = self.health - original_health
+        print(f"{self.name} heals for {actual_healed} health! Current health: {self.health}\{self.max_health}")
 
 # Warrior class (inherits from Character)
 class Warrior(Character):

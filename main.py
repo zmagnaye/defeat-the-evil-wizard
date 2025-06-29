@@ -40,8 +40,7 @@ def battle(player, wizard):
             # Call the special ability here
             pass  # Implement this
         elif choice == '3':
-            # Call the heal method here
-            pass  # Implement this
+           player.heal()
         elif choice == '4':
             player.display_stats()
         else:
